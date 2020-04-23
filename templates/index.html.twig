@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>View de Apresentação</h1>
+    {% if title is defined %}
+        <h2>Titulo do projeto: {{ title }}</h2>
+    {% endif %} <br>
+
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Empresa Nome</th>
+                <th>Razão Social</th>
+                <th>Endereço</th>
+                <th>CNPJ</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empresa in empresas  %}
+                <tr>
+                    <td><a href="{{ path('empresa_show',{id:empresa.id}) }}">{{ empresa.nome }}</a></td>
+                    <td>
+                         {{ empresa.razaoSocial }}
+                    </td>
+                    <td>
+                        {{ empresa.endereco }}
+                    </td>
+                    <td>
+                        {{ empresa.cnpj }}
+                    </td>
+                    <td>
+                        <a href="{{ path('empresa_update',{id:empresa.id}) }}">Editar</a> - <a href="">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
